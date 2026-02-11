@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="32" fill="#faf8f5"/>
+  <circle cx="96" cy="80" r="36" fill="#c9a84c"/>
+  <text x="96" y="92" text-anchor="middle" font-size="32" font-weight="bold" fill="white" font-family="sans-serif">7</text>
+  <circle cx="96" cy="80" r="36" fill="none" stroke="#e8d48b" stroke-width="3"/>
+  <text x="96" y="148" text-anchor="middle" font-size="18" font-weight="bold" fill="#2d2a26" font-family="sans-serif">LOTTO</text>
+  <text x="96" y="168" text-anchor="middle" font-size="14" fill="#9b9589" font-family="sans-serif">DIARY</text>
+</svg>
