@@ -1,13 +1,18 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import EntryCard from "@/components/EntryCard";
-import { prisma } from "@/lib/prisma";
+import { getEntries, type LottoEntry } from "@/lib/store";
 
-export const dynamic = "force-dynamic";
+export default function HistoryPage() {
+  const [entries, setEntries] = useState<LottoEntry[]>([]);
+  const [mounted, setMounted] = useState(false);
 
-export default async function HistoryPage() {
-  const entries = await prisma.lottoEntry.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  useEffect(() => {
+    setMounted(true);
+    setEntries(getEntries());
+  }, []);
 
   const totalSpent = entries.reduce((sum, e) => sum + e.amount, 0);
   const roundsPlayed = new Set(entries.map((e) => e.round)).size;
@@ -19,21 +24,21 @@ export default async function HistoryPage() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3">
           <div className="bg-surface rounded-2xl p-3 border border-border text-center">
-            <p className="text-2xl font-bold text-primary">{entries.length}</p>
+            <p className="text-2xl font-bold text-primary">{mounted ? entries.length : 0}</p>
             <p className="text-[10px] text-muted mt-0.5">총 기록</p>
           </div>
           <div className="bg-surface rounded-2xl p-3 border border-border text-center">
-            <p className="text-2xl font-bold text-secondary">{roundsPlayed}</p>
+            <p className="text-2xl font-bold text-secondary">{mounted ? roundsPlayed : 0}</p>
             <p className="text-[10px] text-muted mt-0.5">참여 회차</p>
           </div>
           <div className="bg-surface rounded-2xl p-3 border border-border text-center">
-            <p className="text-lg font-bold text-accent">{totalSpent.toLocaleString()}</p>
+            <p className="text-lg font-bold text-accent">{mounted ? totalSpent.toLocaleString() : 0}</p>
             <p className="text-[10px] text-muted mt-0.5">총 투자(원)</p>
           </div>
         </div>
 
         {/* Timeline */}
-        {entries.length === 0 ? (
+        {!mounted || entries.length === 0 ? (
           <div className="text-center py-16">
             <div className="text-5xl mb-4">&#128221;</div>
             <p className="text-muted text-sm">아직 기록이 없어요</p>
@@ -49,11 +54,11 @@ export default async function HistoryPage() {
               >
                 <EntryCard
                   round={entry.round}
-                  numbers={[entry.num1, entry.num2, entry.num3, entry.num4, entry.num5, entry.num6]}
+                  numbers={entry.numbers}
                   memo={entry.memo}
                   dream={entry.dream}
                   amount={entry.amount}
-                  createdAt={entry.createdAt.toISOString()}
+                  createdAt={entry.createdAt}
                 />
               </div>
             ))}
