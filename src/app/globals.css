@@ -46,7 +46,7 @@
   --color-ball-red: var(--ball-21-30);
   --color-ball-gray: var(--ball-31-40);
   --color-ball-green: var(--ball-41-45);
-  --font-sans: var(--font-pretendard);
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 @keyframes float {
@@ -78,7 +78,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-pretendard), 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   min-height: 100dvh;
 }
 

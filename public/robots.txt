@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lotto-diary.vercel.app/sitemap.xml
+Sitemap: https://wheniwinlotto.vercel.app/sitemap.xml

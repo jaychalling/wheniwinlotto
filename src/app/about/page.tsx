@@ -89,7 +89,7 @@ export default function AboutPage() {
             로또 일기 v1.0
           </p>
           <p className="text-[10px] text-muted mt-1">
-            Made with hope and dreams
+            희망과 꿈을 담아 만들었습니다
           </p>
         </div>
       </main>
